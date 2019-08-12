@@ -6,7 +6,7 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 19:42:07 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/10 22:40:33 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/08/12 16:10:28 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,12 @@ t_map	*map_read(int fd)
 	int_map_int(map);
 	fill_map_int(map);
 
-	map->round = 0;
-	map->heat_number = 1;
-	while (5 > i)
+	heat_map(map);
+
+	while (i < map->plateau_x)
 	{
-		heat_map(map);
+		fill_heat_map(map);
 		map->heat_number++;
-		// map->round++;
 		i++;
 	}
 

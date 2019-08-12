@@ -6,7 +6,7 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 15:58:47 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/10 22:40:16 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/08/12 16:10:14 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ void	heat_map(t_map *map)
 	int	j;
 
 	i = 0;
-	while (i < 14)
+	map->heat_number = 1;
+	map->round = 0;
+	while (i < map->plateau_y)
 	{
 		j = 0;
 		while (j < map->plateau_x)
@@ -80,6 +82,45 @@ void	heat_map(t_map *map)
 					map->plate_int[i + 1][j - 1] = map->heat_number;
 				if (map->plate_int[i - 1][j + 1] == EMPTY_FIELD)
 					map->plate_int[i - 1][j + 1] = map->heat_number;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void	fill_heat_map(t_map *map)
+{
+	int i;
+	int j;
+
+	i = 0;
+
+	while (i < map->plateau_y)
+	{
+		j = 0;
+		while (j < map->plateau_x)
+		{
+			if (map->plate_int[i][j] == map->heat_number
+				&& (i - 1) >= 0 && (j - 1) >= 0
+				&& (j + 1) < map->plateau_x && (i + 1) < map->plateau_y)
+			{
+				if (map->plate_int[i][j + 1] == EMPTY_FIELD)
+					map->plate_int[i][j + 1] = map->heat_number + 1;
+				if (map->plate_int[i][j - 1] == EMPTY_FIELD)
+					map->plate_int[i][j - 1] = map->heat_number + 1;
+				if (map->plate_int[i + 1][j] == EMPTY_FIELD)
+					map->plate_int[i + 1][j] = map->heat_number + 1;
+				if (map->plate_int[i - 1][j] == EMPTY_FIELD)
+					map->plate_int[i - 1][j] = map->heat_number + 1;
+				if (map->plate_int[i + 1][j + 1] == EMPTY_FIELD)
+					map->plate_int[i + 1][j + 1] = map->heat_number + 1;
+				if (map->plate_int[i - 1][j - 1] == EMPTY_FIELD)
+					map->plate_int[i - 1][j - 1] = map->heat_number + 1;
+				if (map->plate_int[i + 1][j - 1] == EMPTY_FIELD)
+					map->plate_int[i + 1][j - 1] = map->heat_number + 1;
+				if (map->plate_int[i - 1][j + 1] == EMPTY_FIELD)
+					map->plate_int[i - 1][j + 1] = map->heat_number + 1;
 			}
 			j++;
 		}
