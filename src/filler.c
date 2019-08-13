@@ -6,7 +6,7 @@
 /*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 19:42:07 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/13 00:29:30 by metalium         ###   ########.fr       */
+/*   Updated: 2019/08/13 04:02:55 by metalium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_map	*map_read(int fd)
 		map->heat_number++;
 		i++;
 	}
+	map->l_sum = 1000;
 	check_figure(map);
 	return (map);
 }
@@ -48,10 +49,12 @@ int		main(void)
 	int		j;
 	t_map	*map;
 
+
 	i = 0;
 	fd = open("src/filler.txt", O_RDONLY);
 	map = map_read(fd);
 
+	ft_printf("player: y = %d, x = %d, sum: %d\n", map->return_y, map->return_x, map->l_sum);
 	ft_printf("player: %c\n", map->player);
 	ft_printf("plateau_x: %d\n", map->plateau_x);
 	ft_printf("plateau_y: %d\n", map->plateau_y);

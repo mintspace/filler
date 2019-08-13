@@ -6,7 +6,7 @@
 /*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 17:13:17 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/13 03:42:42 by metalium         ###   ########.fr       */
+/*   Updated: 2019/08/13 04:12:14 by metalium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,21 @@ void	move(t_map *map, int start_x, int start_y)
 	i = 0;
 	x = start_x;
 	y = start_y;
-	map->l_sum = 0;
+
 	while (y < ((map->plateau_y + 1) - map->piece_y) && i < map->piece_y)
 	{
 		j = 0;
 		x = start_x;
 		while (x < ((map->plateau_y + 1)- map->piece_x) && j < map->piece_x)
 		{
-			if (map->figure_map[i][j] == '*' && map->plate_int[y][x] == -4)
+			if (map->figure_map[i][j] == '*' && map->plate_int[y][x] == ENEMY)
+			{
+				ft_printf("%s", "overlap!!!\n");
+				break ;
+			}
+			if (map->figure_map[i][j] == '*' && map->plate_int[y][x] == PLAYER)
 			{
 				lowest_summ(map, start_x, start_y);
-				ft_printf("player: y = %d, x = %d, sum: %d\n", map->return_y, map->return_x, map->l_sum);
 				break ;
 			}
 			j++;
@@ -78,8 +82,7 @@ void	lowest_summ(t_map *map, int start_x, int start_y)
 		}
 		start_y++;
 	}
-	map->l_sum = sum;
-	if (map->l_sum <= sum)
+	if (sum < map->l_sum)
 	{
 		map->l_sum = sum;
 		map->return_x = x;
