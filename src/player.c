@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 16:13:10 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/10 19:16:24 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/08/13 00:30:20 by metalium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	get_piece(t_map *map)
 			break ;
 		ft_strdel(&str);
 	}
-	map->piece_x = ft_atoi(ft_strrchr(str, ' '));
-	map->piece_y = ft_atoi(ft_strchr(str, ' '));
+	map->piece_y = ft_atoi(ft_strrchr(str, ' '));
+	map->piece_x = ft_atoi(ft_strchr(str, ' '));
 	ft_strdel(&str);
 }
 

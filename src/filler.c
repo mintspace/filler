@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filler.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 19:42:07 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/12 18:34:08 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/08/13 00:29:30 by metalium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_map	*map_read(int fd)
 		map->heat_number++;
 		i++;
 	}
-	move(map);
+	check_figure(map);
 	return (map);
 }
 
