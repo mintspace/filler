@@ -6,7 +6,7 @@
 /*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 17:13:17 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/13 02:18:10 by metalium         ###   ########.fr       */
+/*   Updated: 2019/08/13 03:42:42 by metalium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,17 @@ void	move(t_map *map, int start_x, int start_y)
 	i = 0;
 	x = start_x;
 	y = start_y;
+	map->l_sum = 0;
 	while (y < ((map->plateau_y + 1) - map->piece_y) && i < map->piece_y)
 	{
 		j = 0;
 		x = start_x;
 		while (x < ((map->plateau_y + 1)- map->piece_x) && j < map->piece_x)
 		{
-			// if (map->figure_map[i][j] == '*' && map->plate_int[start_y][start_x] == 0)
-			// {
-			// 	ft_printf("enemy: y = %d, x = %d\n", start_y, start_x);
-			// 	break ;
-			// }
 			if (map->figure_map[i][j] == '*' && map->plate_int[y][x] == -4)
 			{
-				ft_printf("player: y = %d, x = %d\n", start_y, start_x);
+				lowest_summ(map, start_x, start_y);
+				ft_printf("player: y = %d, x = %d, sum: %d\n", map->return_y, map->return_x, map->l_sum);
 				break ;
 			}
 			j++;
@@ -60,5 +57,32 @@ void	check_figure(t_map *map)
 			start_x++;
 		}
 		start_y++;
+	}
+}
+
+void	lowest_summ(t_map *map, int start_x, int start_y)
+{
+	int	sum;
+	int x;
+	int y;
+
+	sum = 0;
+	x = start_x;
+	y = start_y;
+	while (start_y < (y + map->piece_y))
+	{
+		while (start_x < (x + map->piece_x))
+		{
+			sum += map->plate_int[start_y][start_x];
+			start_x++;
+		}
+		start_y++;
+	}
+	map->l_sum = sum;
+	if (map->l_sum <= sum)
+	{
+		map->l_sum = sum;
+		map->return_x = x;
+		map->return_y = y;
 	}
 }

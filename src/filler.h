@@ -6,7 +6,7 @@
 /*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 19:46:27 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/12 23:52:21 by metalium         ###   ########.fr       */
+/*   Updated: 2019/08/13 03:32:01 by metalium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ typedef struct	s_map
 	int			round;
 	char		**figure_map;
 	int			heat_number;
+	int			l_sum;
+	int			return_x;
+	int			return_y;
 
 }				t_map;
 
@@ -49,5 +52,6 @@ void			fill_heat_map(t_map *map);
 
 void			move(t_map *map, int start_x, int start_y);
 void			check_figure(t_map *map);
+void			lowest_summ(t_map *map, int start_x, int start_y);
 
 #endif
