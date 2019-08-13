@@ -6,7 +6,7 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 19:46:27 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/12 15:59:14 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/08/12 17:13:00 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,7 @@ void			int_map_int(t_map *map);
 void			fill_map_int(t_map *map);
 void			heat_map(t_map *map);
 void			fill_heat_map(t_map *map);
+
+void			move(t_map *map);
 
 #endif

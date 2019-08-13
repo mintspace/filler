@@ -6,7 +6,7 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 19:42:07 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/12 16:10:28 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/08/12 18:34:08 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_map	*map_read(int fd)
 		map->heat_number++;
 		i++;
 	}
-
+	move(map);
 	return (map);
 }
 
