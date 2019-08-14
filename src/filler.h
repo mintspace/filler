@@ -6,7 +6,7 @@
 /*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 19:46:27 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/13 04:02:54 by metalium         ###   ########.fr       */
+/*   Updated: 2019/08/14 03:59:21 by metalium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,14 @@ typedef struct	s_map
 	int			return_x;
 	int			return_y;
 
+	char		*piece_str;
+
 }				t_map;
 
 void			get_plateau(t_map *map);
 void			get_map(t_map *map);
+
+void			game_start(t_map *map);
 
 void			get_player(t_map *map);
 void			get_piece(t_map *map);

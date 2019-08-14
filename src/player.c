@@ -6,7 +6,7 @@
 /*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 16:13:10 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/13 04:02:53 by metalium         ###   ########.fr       */
+/*   Updated: 2019/08/14 05:13:39 by metalium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,35 +16,40 @@ void	get_player(t_map *map)
 {
 	char	*str;
 
-	get_next_line(map->fd, &str);
-	if (ft_strstr(str, "$$$ exec p"))
+	while (1)
 	{
-		map->player = 'X';
-		map->enemy = 'O';
+		get_next_line(map->fd, &str);
+		if (ft_strstr(str, "$$$ exec p"))
+			break ;
 	}
-	else
+	if (ft_strstr(str, "1"))
 	{
 		map->player = 'O';
 		map->enemy = 'X';
 	}
-	ft_strdel(&str);
-}
-
-void	get_piece(t_map *map)
-{
-	char *str;
-
-	while (1)
+	else
 	{
-		get_next_line(map->fd, &str);
-		if (ft_strstr(str, "Piece"))
-			break ;
-		ft_strdel(&str);
+		map->player = 'X';
+		map->enemy = 'O';
 	}
-	map->piece_y = ft_atoi(ft_strrchr(str, ' '));
-	map->piece_x = ft_atoi(ft_strchr(str, ' '));
 	ft_strdel(&str);
 }
+
+// void	get_piece(t_map *map)
+// {
+// 	char *str;
+
+// 	while (1)
+// 	{
+// 		get_next_line(map->fd, &str);
+// 		if (ft_strstr(str, "Piece"))
+// 			break ;
+// 		ft_strdel(&str);
+// 	}
+// 	// map->piece_y = ft_atoi(ft_strrchr(str, ' '));
+// 	// map->piece_x = ft_atoi(ft_strchr(str, ' '));
+// 	ft_strdel(&str);
+// }
 
 void	get_figure(t_map *map)
 {

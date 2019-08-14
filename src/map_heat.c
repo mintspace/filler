@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_heat.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 15:58:47 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/12 18:33:57 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/08/14 05:52:35 by metalium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ void	heat_map(t_map *map)
 			if (map->plate_int[i][j] == PLAYER)
 				map->plate_int[i][j] = PLAYER;
 
-			if (map->plate_int[i][j] == map->round)
+			if (map->plate_int[i][j] == map->round
+				&& (i - 1) >= 0 && (j - 1) >= 0
+				&& (j + 1) < map->plateau_x && (i + 1) < map->plateau_y)
 			{
 				if (map->plate_int[i][j + 1] == EMPTY_FIELD)
 					map->plate_int[i][j + 1] = map->heat_number;

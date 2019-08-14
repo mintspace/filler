@@ -3,37 +3,38 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+         #
+#    By: metalium <metalium@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/21 12:03:47 by dbubnov           #+#    #+#              #
-#    Updated: 2019/08/09 15:38:54 by dbubnov          ###   ########.fr        #
+#    Updated: 2019/08/14 03:35:51 by metalium         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=libft.a
+NAME=./resources/players/dbubnov.filler
 
-OBJECTS=*.o
+SRCS=src/*.c
+
+INCLUDES=libft/libft.a
 
 FLAGS=-Werror -Wextra -Wall
 
 all: $(NAME)
 
 $(NAME):
-	@make -C libft/ re
+	@make -C libft/ all
+	gcc -o $(NAME) $(FLAGS) $(SRCS) $(INCLUDES)
 
 clean:
 	@make -C libft/ clean
-	/bin/rm -f $(OBJECTS)
 
 fclean: clean
-	@make -C libft/ fclean
 	/bin/rm -f $(NAME)
+	@make -C libft/ fclean
 
 re: fclean all
 
-
-# ./filler_vm -f maps/map01 -p1 players/abanlin.filler -p2 players/carli.filler | less
-#---------------------------------------------------------
+game:
+	./resources/filler_vm -f ./resources/maps/map01 -p1 ./resources/players/dbubnov.filler -p2 ./resources/players/abanlin.filler
 
 run:
 	gcc $(FLAGS) ./libft/libft.a ./src/*.c

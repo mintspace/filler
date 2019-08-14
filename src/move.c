@@ -6,7 +6,7 @@
 /*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 17:13:17 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/13 04:12:14 by metalium         ###   ########.fr       */
+/*   Updated: 2019/08/14 05:51:23 by metalium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	move(t_map *map, int start_x, int start_y)
 	int y;
 
 	i = 0;
-	x = start_x;
 	y = start_y;
 
 	while (y < ((map->plateau_y + 1) - map->piece_y) && i < map->piece_y)
@@ -31,7 +30,7 @@ void	move(t_map *map, int start_x, int start_y)
 		{
 			if (map->figure_map[i][j] == '*' && map->plate_int[y][x] == ENEMY)
 			{
-				ft_printf("%s", "overlap!!!\n");
+				// ft_printf("%s", "overlap!!!\n");
 				break ;
 			}
 			if (map->figure_map[i][j] == '*' && map->plate_int[y][x] == PLAYER)
