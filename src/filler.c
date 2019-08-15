@@ -6,7 +6,7 @@
 /*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 19:42:07 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/14 05:53:52 by metalium         ###   ########.fr       */
+/*   Updated: 2019/08/14 17:06:56 by metalium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_map	*first_read(int fd)
 	map->fd = fd;
 	get_player(map);
 	get_plateau(map);
-	get_map(map);
 	return (map);
 }
 
@@ -29,7 +28,8 @@ void	game_start(t_map *map)
 	int		i;
 
 	i = 0;
-	// get_piece(map);
+	get_map(map);
+	get_piece(map);
 	get_figure(map);
 	int_map_int(map);
 	fill_map_int(map);
@@ -52,46 +52,46 @@ int		main(void)
 	int j;
 	t_map	*map;
 	char	*str;
-
 	// fd = 0;
 	fd = open("src/filler.txt", O_RDONLY);
 
 	map = first_read(fd);
 	while (get_next_line(map->fd, &str) > 0)
 	{
-
-		map->piece_x = ft_atoi(ft_strrchr(str, ' '));
-		map->piece_y = ft_atoi(ft_strchr(str, ' '));
 		game_start(map);
-	}
 
-// //-----------------------------------------------------------------------
+		i = 0;
+		ft_printf("player: y = %d, x = %d, sum: %d\n", map->return_y, map->return_x, map->l_sum);
+		ft_printf("player: %c\n", map->player);
+		ft_printf("plateau_x: %d\n", map->plateau_x);
+		ft_printf("plateau_y: %d\n", map->plateau_y);
+		while (map->plateau_map[i])
+			ft_printf("%s\n", map->plateau_map[i++]);
+		ft_printf("piece_x: %d\n", map->piece_x);
+		ft_printf("piece_y: %d\n", map->piece_y);
+		i = 0;
+		while (map->figure_map[i])
+			ft_printf("%s\n", map->figure_map[i++]);
+		i = 0;
 
-	i = 0;
-	ft_printf("player: y = %d, x = %d, sum: %d\n", map->return_y, map->return_x, map->l_sum);
-	ft_printf("player: %c\n", map->player);
-	ft_printf("plateau_x: %d\n", map->plateau_x);
-	ft_printf("plateau_y: %d\n", map->plateau_y);
-	while (map->plateau_map[i])
-		ft_printf("%s\n", map->plateau_map[i++]);
-	ft_printf("piece_x: %d\n", map->piece_x);
-	ft_printf("piece_y: %d\n", map->piece_y);
-	i = 0;
-	while (map->figure_map[i])
-		ft_printf("%s\n", map->figure_map[i++]);
-	i = 0;
-
-	while (i < map->plateau_y)
-	{
-		j = 0;
-		while (j < map->plateau_x)
+		while (i < map->plateau_y)
 		{
-			ft_printf("%2d ", map->plate_int[i][j]);
-			j++;
+			j = 0;
+			while (j < map->plateau_x)
+			{
+				ft_printf("%2d ", map->plate_int[i][j]);
+				j++;
+			}
+			write(1, "\n", 1);
+			i++;
 		}
-		write(1, "\n", 1);
-		i++;
 	}
+
+
+//-----------------------------------------------------------------------
+
+
+//-----------------------------------------------------------------------
 
 	close(fd);
 	return (0);
