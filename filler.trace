@@ -1,5 +1,4 @@
-seed = 4707
-./resources/players/dbubnov.filler: Segfault at 0
+seed = 554
 ./resources/players/abanlin.filler won
 Score:
-0AGAINST338
+0AGAINST322

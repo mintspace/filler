@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 17:13:17 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/14 23:48:24 by metalium         ###   ########.fr       */
+/*   Updated: 2019/08/16 17:28:25 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@ void	move(t_map *map, int start_x, int start_y)
 	int j;
 	int x;
 	int y;
-	int coincidence;
 
 	i = 0;
 	y = start_y;
-	coincidence = 0;
+	map->coincidence = 0;
 	while (y < ((map->plateau_y + 1) - map->piece_y) && i < map->piece_y)
 	{
 		j = 0;
@@ -32,18 +31,19 @@ void	move(t_map *map, int start_x, int start_y)
 			if (map->figure_map[i][j] == '*' && map->plate_int[y][x] == ENEMY)
 				break ;
 			if (map->figure_map[i][j] == '*' && map->plate_int[y][x] == PLAYER)
-			{
-				lowest_summ(map, start_x, start_y);
-				break ;
-
-			}
+				map->coincidence++;
 			j++;
 			x++;
+		}
+		if (map->coincidence == 1)
+		{
+			lowest_summ(map, start_x, start_y);
 		}
 		i++;
 		y++;
 	}
 }
+
 void	check_figure(t_map *map)
 {
 	int	start_x;

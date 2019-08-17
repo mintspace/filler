@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filler.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 19:46:27 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/14 03:59:21 by metalium         ###   ########.fr       */
+/*   Updated: 2019/08/16 16:26:38 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct	s_map
 	int			l_sum;
 	int			return_x;
 	int			return_y;
+	int			coincidence;
 
 	char		*piece_str;
 
