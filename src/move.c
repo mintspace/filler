@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 17:13:17 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/16 17:28:25 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/08/19 00:33:06 by metalium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	move(t_map *map, int start_x, int start_y)
 	int x;
 	int y;
 
+	map->coincidence = 0;
 	i = 0;
 	y = start_y;
-	map->coincidence = 0;
 	while (y < ((map->plateau_y + 1) - map->piece_y) && i < map->piece_y)
 	{
 		j = 0;
@@ -34,13 +34,14 @@ void	move(t_map *map, int start_x, int start_y)
 				map->coincidence++;
 			j++;
 			x++;
+
 		}
+		i++;
+		y++;
 		if (map->coincidence == 1)
 		{
 			lowest_summ(map, start_x, start_y);
 		}
-		i++;
-		y++;
 	}
 }
 
@@ -80,7 +81,7 @@ void	lowest_summ(t_map *map, int start_x, int start_y)
 		}
 		start_y++;
 	}
-	if (sum < map->l_sum)
+	if (sum < map->l_sum && sum > 0)
 	{
 		map->l_sum = sum;
 		map->return_x = x;

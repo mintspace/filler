@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filler.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 19:42:07 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/16 17:11:41 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/08/19 00:33:27 by metalium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int		main(void)
 		ft_printf("player: %c\n", map->player);
 		ft_printf("plateau_x: %d\n", map->plateau_x);
 		ft_printf("plateau_y: %d\n", map->plateau_y);
-		while (map->plateau_map[i])
-			ft_printf("%s\n", map->plateau_map[i++]);
+		// while (map->plateau_map[i])
+		// 	ft_printf("%s\n", map->plateau_map[i++]);
 		ft_printf("piece_x: %d\n", map->piece_x);
 		ft_printf("piece_y: %d\n", map->piece_y);
 		i = 0;
