@@ -6,7 +6,7 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 17:13:17 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/19 19:18:43 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/08/19 19:49:18 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ void	lowest_summ(t_map *map, int start_x, int start_y)
 		map->l_sum = sum;
 		map->return_x = x_return;
 		map->return_y = y_return;
+		// ft_printf("coincidence: %d\n", map->coincidence_enemy );
 	}
 }
