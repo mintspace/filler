@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_heat.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 15:58:47 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/18 01:18:03 by metalium         ###   ########.fr       */
+/*   Updated: 2019/08/19 10:20:20 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,12 @@ void	fill_heat_map(t_map *map)
 		j = 0;
 		while (j < map->plateau_x)
 		{
+
 			if (map->plate_int[i][j] == map->heat_number
 				&& (i - 1) >= 0 // work left top, botoom
-				// && (i + 1) >= 0
+				&& (j - 1) >= 0
+				// && (j - 1) >= 0
+				// && (j + 1) >= 0
 				&& (j + 1) < map->plateau_x // heat map fix, wrong heat neat -4
 				&& (i + 1) < map->plateau_y)
 			{

@@ -6,7 +6,7 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 19:46:27 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/16 16:26:38 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/08/19 14:52:14 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 # define PLAYER -4
 # define ENEMY 0
-# define EMPTY_FIELD -1
+# define EMPTY_FIELD 500
 
 typedef struct	s_map
 {
@@ -36,6 +36,7 @@ typedef struct	s_map
 	int			return_x;
 	int			return_y;
 	int			coincidence;
+	int			coincidence_enemy;
 
 	char		*piece_str;
 
