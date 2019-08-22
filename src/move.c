@@ -6,7 +6,7 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 17:13:17 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/19 19:49:18 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/08/21 19:37:38 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@ void	move(t_map *map, int start_x, int start_y)
 				break ;
 			}
 			if (map->figure_map[i][j] == '*' && map->plate_int[y][x] == PLAYER)
-			{
 				map->coincidence++;
-			}
 			j++;
 			x++;
 		}
@@ -56,10 +54,10 @@ void	check_figure(t_map *map)
 	map->return_x = 0;
 	map->return_y = 0;
 	start_y = 0;
-	while (start_y < ((map->plateau_x + 1) - map->piece_x))
+	while (start_y <= ((map->plateau_x) - map->piece_x))
 	{
 		start_x = 0;
-		while (start_x < ((map->plateau_y + 1) - map->piece_y))
+		while (start_x <= ((map->plateau_y) - map->piece_y))
 		{
 			move(map, start_x, start_y);
 			start_x++;
@@ -99,6 +97,5 @@ void	lowest_summ(t_map *map, int start_x, int start_y)
 		map->l_sum = sum;
 		map->return_x = x_return;
 		map->return_y = y_return;
-		// ft_printf("coincidence: %d\n", map->coincidence_enemy );
 	}
 }
