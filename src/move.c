@@ -6,7 +6,7 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 17:13:17 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/21 19:37:38 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/08/22 11:00:05 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ void	move(t_map *map, int start_x, int start_y)
 	map->coincidence_enemy = 0;
 	i = 0;
 	y = start_y;
-	while (y < ((map->plateau_y + 1) - map->piece_y) && i < map->piece_y)
+	while (y < map->plateau_y && i < map->piece_y)
 	{
 		j = 0;
 		x = start_x;
-		while (x < ((map->plateau_x + 1) - map->piece_x) && j < map->piece_x)
+		while (x < map->plateau_x && j < map->piece_x)
 		{
 			if (map->figure_map[i][j] == '*' && map->plate_int[y][x] == ENEMY)
 			{
@@ -54,10 +54,10 @@ void	check_figure(t_map *map)
 	map->return_x = 0;
 	map->return_y = 0;
 	start_y = 0;
-	while (start_y <= ((map->plateau_x) - map->piece_x))
+	while (start_y <= (map->plateau_x - map->piece_x))
 	{
 		start_x = 0;
-		while (start_x <= ((map->plateau_y) - map->piece_y))
+		while (start_x <= (map->plateau_y - map->piece_y))
 		{
 			move(map, start_x, start_y);
 			start_x++;
@@ -78,11 +78,11 @@ void	lowest_summ(t_map *map, int start_x, int start_y)
 	x_return = start_x;
 	y_return = start_y;
 	y = 0;
-	while (start_y < (y_return + map->piece_y))
+	while (start_y < (y_return + map->piece_y) && start_y < map->plateau_y)
 	{
 		x = 0;
 		start_x = x_return;
-		while (start_x < (x_return + map->piece_x))
+		while (start_x < (x_return + map->piece_x) & start_x < map->plateau_x)
 		{
 			if (map->figure_map[y][x] == '*')
 				sum += map->plate_int[start_y][start_x];
