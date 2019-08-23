@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+         #
+#    By: metalium <metalium@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/21 12:03:47 by dbubnov           #+#    #+#              #
-#    Updated: 2019/08/22 16:19:57 by dbubnov          ###   ########.fr        #
+#    Updated: 2019/08/22 17:56:05 by metalium         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ fclean: clean
 re: fclean all
 
 game:
-	./resources/filler_vm -f ./resources/maps/map00 -p2 ./resources/players/dbubnov.filler -p1 ./resources/players/superjeannot.filler
+	./resources/filler_vm -f ./resources/maps/map01 -p1 ./resources/players/dbubnov.filler -p2 ./resources/players/superjeannot.filler
 
 run:
 	gcc $(FLAGS) ./libft/libft.a ./src/*.c
