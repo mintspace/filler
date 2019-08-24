@@ -6,7 +6,7 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 17:13:17 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/22 11:00:05 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/08/23 15:38:13 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	move(t_map *map, int start_x, int start_y)
 				map->coincidence_enemy++;
 				break ;
 			}
-			if (map->figure_map[i][j] == '*' && map->plate_int[y][x] == PLAYER)
+			if (map->figure_map[i][j] == '*' && map->plate_int[y][x] == PLAYER )
 				map->coincidence++;
 			j++;
 			x++;

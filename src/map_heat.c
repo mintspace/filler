@@ -6,7 +6,7 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 15:58:47 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/19 10:20:20 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/08/23 15:38:12 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	fill_map_int(t_map *map)
 		{
 			if (map->plateau_map[i][j] == '.')
 				map->plate_int[i][j] = EMPTY_FIELD;
-			if (map->plateau_map[i][j] == map->player)
+			if (map->plateau_map[i][j] == map->player || map->plateau_map[i][j] == (map->player + 32))
 				map->plate_int[i][j] = PLAYER;
 			if (map->plateau_map[i][j] == map->enemy)
 				map->plate_int[i][j] = ENEMY;
@@ -107,8 +107,6 @@ void	fill_heat_map(t_map *map)
 			if (map->plate_int[i][j] == map->heat_number
 				&& (i - 1) >= 0 // work left top, botoom
 				&& (j - 1) >= 0
-				// && (j - 1) >= 0
-				// && (j + 1) >= 0
 				&& (j + 1) < map->plateau_x // heat map fix, wrong heat neat -4
 				&& (i + 1) < map->plateau_y)
 			{
