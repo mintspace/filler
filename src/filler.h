@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filler.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 19:46:27 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/23 14:39:19 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/08/28 00:11:04 by metalium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct	s_map
 	int			**plate_int;
 	int			piece_x;
 	int			piece_y;
+	int			tmp_x;
+	int			tmp_y;
 	int			round;
 	char		**figure_map;
 	int			heat_number;
