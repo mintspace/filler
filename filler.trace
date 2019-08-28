@@ -1,4 +1,6 @@
-seed = 4098
-./resources/players/dbubnov.filler won
+seed = 5635
+O: timedout
+X: error on input
+./resources/players/superjeannot.filler won
 Score:
-285AGAINST43
+0AGAINST34
