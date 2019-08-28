@@ -6,31 +6,31 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 17:13:17 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/28 13:28:45 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/08/28 15:49:17 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void	move(t_map *map)
-{
-	int	i;
-	int	j;
+// void	move(t_map *map)
+// {
+// 	int	i;
+// 	int	j;
 
-	i = 0;
-	map->coincidence = 0;
-	map->coincidence_enemy = 0;
-	while (i < map->plateau_y - map->piece_y)
-	{
-		j = 0;
-		while (j < map->plateau_x - map->piece_x)
-		{
-			small_move(map);
-			j++;
-		}
-		i++;
-	}
-}
+// 	i = 0;
+// 	map->coincidence = 0;
+// 	map->coincidence_enemy = 0;
+// 	while (i < map->plateau_y - map->piece_y)
+// 	{
+// 		j = 0;
+// 		while (j < map->plateau_x - map->piece_x)
+// 		{
+// 			small_move(map);
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }
 
 void	small_move(t_map *map)
 {
@@ -42,6 +42,10 @@ void	small_move(t_map *map)
 	x = map->start_x;
 	y = map->start_y;
 	i = 0;
+
+	map->coincidence = 0;
+	map->coincidence_enemy = 0;
+
 	while (i < map->piece_y)
 	{
 		j = 0;
@@ -54,7 +58,11 @@ void	small_move(t_map *map)
 				break ;
 			}
 			if (map->figure_map[i][j] == '*' && map->plate_int[y][x] == PLAYER)
+			{
 				map->coincidence++;
+				if (map->coincidence > 1)
+					break ;
+			}
 			j++;
 			x++;
 		}
@@ -75,7 +83,7 @@ void	check_figure(t_map *map)
 		map->start_x = 0;
 		while (map->start_x <= (map->plateau_x - map->piece_x))
 		{
-			move(map);
+			small_move(map);
 			map->start_x++;
 		}
 		map->start_y++;

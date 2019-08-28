@@ -6,7 +6,7 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 19:46:27 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/28 13:25:15 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/08/28 13:57:53 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include "../libft/libft.h"
 # define PLAYER -4
 # define ENEMY 0
-# define EMPTY_FIELD 150
+# define EMPTY_FIELD 500
 
 typedef struct	s_map
 {
