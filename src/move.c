@@ -3,42 +3,85 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 17:13:17 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/28 09:06:26 by metalium         ###   ########.fr       */
+/*   Updated: 2019/08/28 12:47:14 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void small_move(t_map *map)
+void	move(t_map *map)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	j = 0;
-	while (i <= map->piece_y)
+	map->coincidence = 0;
+	map->coincidence_enemy = 0;
+	while (i < map->plateau_y - map->piece_y)
 	{
-		while (j <= map->piece_x)
+		j = 0;
+		while (j < map->plateau_x - map->piece_x)
 		{
-
+			small_move(map);
 			j++;
 		}
 		i++;
 	}
 }
 
-void move(t_map *map, int start_x, int start_y)
+void	small_move(t_map *map)
 {
-	int i;
+	int	i;
 	int	j;
+	int x;
+	int y;
 
+	x = map->start_x;
+	y = map->start_y;
 	i = 0;
-	j = 0;
-	while ()
+	while (i < map->piece_y)
+	{
+		j = 0;
+		x = map->start_x;
+		while (j < map->piece_x)
+		{
+			if (map->figure_map[i][j] == '*' && map->plate_int[y][x] == ENEMY)
+			{
+				map->coincidence_enemy++;
+				break ;
+			}
+			if (map->figure_map[i][j] == '*' && map->plate_int[y][x] == PLAYER)
+				map->coincidence++;
+			j++;
+			x++;
+		}
+		i++;
+		y++;
+	}
+	if (map->coincidence == 1 && map->coincidence_enemy == 0)
+		lowest_summ(map, map->start_x, map->start_y);
 }
+
+void	check_figure(t_map *map)
+{
+	map->return_x = 0;
+	map->return_y = 0;
+	map->start_y = 0;
+	while (map->start_y <= (map->plateau_y - map->piece_y))
+	{
+		map->start_x = 0;
+		while (map->start_x <= (map->plateau_x - map->piece_x))
+		{
+			move(map);
+			map->start_x++;
+		}
+		map->start_y++;
+	}
+}
+
 // void	move(t_map *map, int start_x, int start_y)
 // {
 // 	int	i;
@@ -76,25 +119,6 @@ void move(t_map *map, int start_x, int start_y)
 
 
 
-void	check_figure(t_map *map)
-{
-	int	start_x;
-	int start_y;
-
-	map->return_x = 0;
-	map->return_y = 0;
-	start_y = 0;
-	while (start_y <= (map->plateau_x - map->piece_x))
-	{
-		start_x = 0;
-		while (start_x <= (map->plateau_y - map->piece_y))
-		{
-			move(map, start_x, start_y);
-			start_x++;
-		}
-		start_y++;
-	}
-}
 
 void	lowest_summ(t_map *map, int start_x, int start_y)
 {
