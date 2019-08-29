@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_plateau.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 16:11:00 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/14 17:28:14 by metalium         ###   ########.fr       */
+/*   Updated: 2019/08/29 08:58:35 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,24 @@ void	get_map(t_map *map)
 		ft_strdel(&str);
 	}
 	map->plateau_map[i] = NULL;
+}
+
+void	heat_map_check(t_map *map, int i, int j)
+{
+	if (map->plate_int[i][j + 1] == EMPTY_FIELD)
+		map->plate_int[i][j + 1] = map->heat_number;
+	if (map->plate_int[i][j - 1] == EMPTY_FIELD)
+		map->plate_int[i][j - 1] = map->heat_number;
+	if (map->plate_int[i + 1][j] == EMPTY_FIELD)
+		map->plate_int[i + 1][j] = map->heat_number;
+	if (map->plate_int[i - 1][j] == EMPTY_FIELD)
+		map->plate_int[i - 1][j] = map->heat_number;
+	if (map->plate_int[i + 1][j + 1] == EMPTY_FIELD)
+		map->plate_int[i + 1][j + 1] = map->heat_number;
+	if (map->plate_int[i - 1][j - 1] == EMPTY_FIELD)
+		map->plate_int[i - 1][j - 1] = map->heat_number;
+	if (map->plate_int[i + 1][j - 1] == EMPTY_FIELD)
+		map->plate_int[i + 1][j - 1] = map->heat_number;
+	if (map->plate_int[i - 1][j + 1] == EMPTY_FIELD)
+		map->plate_int[i - 1][j + 1] = map->heat_number;
 }

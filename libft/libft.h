@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 16:42:20 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/07 23:34:49 by metalium         ###   ########.fr       */
+/*   Updated: 2019/08/29 09:39:54 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,6 @@ int					get_next_line(const int fd, char **line);
 ** ft_printf
 */
 
-int				ft_printf(char *format, ...);
+int					ft_printf(char *format, ...);
 
 #endif

@@ -6,26 +6,18 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 17:13:17 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/28 17:34:12 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/08/29 09:40:41 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void	small_move(t_map *map)
+void	small_move(t_map *map, int i, int j)
 {
-	int	i;
-	int	j;
 	int x;
 	int y;
 
-	x = map->start_x;
 	y = map->start_y;
-	i = 0;
-
-	map->coincidence = 0;
-	map->coincidence_enemy = 0;
-
 	while (i < map->piece_y)
 	{
 		j = 0;
@@ -38,19 +30,13 @@ void	small_move(t_map *map)
 				break ;
 			}
 			if (map->figure_map[i][j] == '*' && map->plate_int[y][x] == PLAYER)
-			{
 				map->coincidence++;
-				if (map->coincidence > 1)
-					break ;
-			}
 			j++;
 			x++;
 		}
 		i++;
 		y++;
 	}
-	if (map->coincidence == 1 && map->coincidence_enemy == 0)
-		lowest_summ(map, map->start_x, map->start_y);
 }
 
 void	check_figure(t_map *map)
@@ -63,25 +49,39 @@ void	check_figure(t_map *map)
 		map->start_x = 0;
 		while (map->start_x <= (map->plateau_x - map->piece_x))
 		{
-			small_move(map);
+			map->coincidence = 0;
+			map->coincidence_enemy = 0;
+			small_move(map, 0, 0);
+			if (map->coincidence == 1 && map->coincidence_enemy == 0)
+				lowest_summ(map, map->start_x, map->start_y);
 			map->start_x++;
 		}
 		map->start_y++;
 	}
 }
 
+void	lowest_summ_check(t_map *map, int sum, int x_return, int y_return)
+{
+	if (sum < map->l_sum)
+	{
+		map->l_sum = sum;
+		map->return_x = x_return;
+		map->return_y = y_return;
+	}
+}
+
 void	lowest_summ(t_map *map, int start_x, int start_y)
 {
-	int	sum;
 	int x;
 	int y;
+	int	sum;
 	int x_return;
 	int y_return;
 
+	y = 0;
 	sum = 0;
 	x_return = start_x;
 	y_return = start_y;
-	y = 0;
 	while (start_y < (y_return + map->piece_y) && start_y < map->plateau_y)
 	{
 		x = 0;
@@ -96,10 +96,5 @@ void	lowest_summ(t_map *map, int start_x, int start_y)
 		start_y++;
 		y++;
 	}
-	if (sum < map->l_sum)
-	{
-		map->l_sum = sum;
-		map->return_x = x_return;
-		map->return_y = y_return;
-	}
+	lowest_summ_check(map, sum, x_return, y_return);
 }

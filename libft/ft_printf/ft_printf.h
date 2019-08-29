@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 16:26:17 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/07 23:33:45 by metalium         ###   ########.fr       */
+/*   Updated: 2019/08/29 09:39:18 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef struct	s_flags
 	char		space_or_zero;
 }				t_flags;
 
-// int				ft_printf(char *format, ...);
 void			type_c(t_flags *flags);
 char			*type_di(char *str, t_flags *flags, va_list *ap);
 t_flags			flags_analizer(char *str);
