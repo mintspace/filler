@@ -6,31 +6,11 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 17:13:17 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/08/28 15:49:17 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/08/28 17:34:12 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
-
-// void	move(t_map *map)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	i = 0;
-// 	map->coincidence = 0;
-// 	map->coincidence_enemy = 0;
-// 	while (i < map->plateau_y - map->piece_y)
-// 	{
-// 		j = 0;
-// 		while (j < map->plateau_x - map->piece_x)
-// 		{
-// 			small_move(map);
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// }
 
 void	small_move(t_map *map)
 {
